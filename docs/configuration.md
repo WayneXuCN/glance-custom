@@ -40,6 +40,7 @@
   - [ChangeDetection.io](#changedetectionio)
   - [Clock](#clock)
   - [Markets](#markets)
+  - [Random Fact](#random-fact)
   - [Twitch Channels](#twitch-channels)
   - [Twitch Top Games](#twitch-top-games)
   - [Weibo](#weibo)
@@ -2995,3 +2996,49 @@ Example:
 ```
 
 Note the use of `|` after `source:`, this allows you to insert a multi-line string.
+
+### Random Fact
+Display a random fact with optional AI processing for translation and explanation.
+
+Example with AI processing:
+
+```yaml
+- type: random-fact
+  title: Random Fact
+  apikey: sk-your-api-key
+  model: gpt-3.5-turbo
+  apiurl: https://api.openai.com/v1/chat/completions
+  cache: 2h
+```
+
+Example without AI processing:
+
+```yaml
+- type: random-fact
+  title: Random Fact
+  cache: 2h
+```
+
+#### Properties
+| Name | Type | Required | Default |
+| ---- | ---- | -------- | ------- |
+| title | string | no | Random Fact |
+| apikey | string | no | |
+| model | string | no | |
+| apiurl | string | no | |
+| cache | string | no | 1h |
+
+##### `title`
+The title displayed at the top of the widget.
+
+##### `apikey`
+API key for the AI service. When not provided, the widget will display raw facts without AI processing.
+
+##### `model`
+The AI model to use for processing the fact. When not provided, the widget will display raw facts without AI processing.
+
+##### `apiurl`
+The API endpoint for the AI service. When not provided, the widget will display raw facts without AI processing.
+
+##### `cache`
+The duration for which to cache the fact. Accepts duration strings like "30m", "2h", "1d".

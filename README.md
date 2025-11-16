@@ -16,7 +16,14 @@
 
 ![](docs/images/readme-main-image.png)
 
+> 本仓库说明（Custom Build）
+>
+> - 本项目基于官方仓库 [glanceapp/glance](https://github.com/glanceapp/glance) 进行了少量定制并重新编译。
+> - 新增小组件：微博热搜（`weibo`）、基于大模型的 Random Fact（`random-fact`）。
+> - 其余功能、配置与使用方式与官方保持一致。
+
 ## Features
+
 ### Various widgets
 * RSS feeds
 * Subreddit posts
@@ -29,8 +36,11 @@
 * Server stats
 * Custom widgets
 * [and many more...](docs/configuration.md#configuring-glance)
+* ⭐ 新增：微博热搜 Widget（`type: weibo`）
+* ⭐ 新增：基于大模型的 Random Fact Widget（`type: random-fact`）
 
 ### Fast and lightweight
+
 * Low memory usage
 * Few dependencies
 * Minimal vanilla JS

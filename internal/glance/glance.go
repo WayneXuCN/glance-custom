@@ -344,7 +344,9 @@ func (a *application) handlePageContentRequest(w http.ResponseWriter, r *http.Re
 
 	pageData := templateData{
 		Page: page,
+		App:  a,
 	}
+	a.populateTemplateRequestData(&pageData.Request, r)
 
 	var err error
 	var responseBytes bytes.Buffer

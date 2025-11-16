@@ -1,0 +1,51 @@
+{{ template "widget-base.html" . }}
+
+{{ define "widget-content" }}
+<div class="fact-container">
+  {{/* 检查是否有AI处理的内容，如果有则显示原文和处理后的内容，否则只显示原文 */}}
+  {{ if ne .CachedData.FactText .CachedData.Content }}
+    <p class="fact-text size-h4 color-subdue">{{ .CachedData.FactText }}</p>
+    <div class="content">
+      <pre class="size-h5 color-main">{{ .CachedData.Content }}</pre>
+    </div>
+  {{ else }}
+    <div class="content">
+      <pre class="size-h4 color-main">{{ .CachedData.Content }}</pre>
+    </div>
+  {{ end }}
+  
+  <div class="meta text-right">
+    <small class="size-h6 color-subdue">{{ .CachedData.Source }} • {{ .CachedData.FactID }}</small>
+  </div>
+</div>
+
+<style>
+.fact-container {
+  padding: var(--widget-content-padding);
+  background: var(--color-widget-background);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-widget-content-border);
+  box-shadow: 0px 3px 0px 0px hsl(var(--bghs), calc(var(--scheme) (var(--scheme) var(--bgl)) - 0.5%));
+}
+
+.fact-text {
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.content {
+  margin-bottom: 12px;
+}
+
+.content pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+.meta {
+  font-size: var(--font-size-h6);
+}
+</style>
+{{ end }}
