@@ -16,11 +16,17 @@
 
 ![](docs/images/readme-main-image.png)
 
-> 本仓库说明（Custom Build）
+> ## 本仓库说明（Custom Build）
+>
+> [![Docker Image](https://github.com/WayneXuCN/glance-custom/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/WayneXuCN/glance-custom/actions/workflows/docker-publish.yml)
 >
 > - 本项目基于官方仓库 [glanceapp/glance](https://github.com/glanceapp/glance) 进行了少量定制并重新编译。
 > - 新增小组件：微博热搜（`weibo`）、基于大模型的 Random Fact（`random-fact`）。
 > - 其余功能、配置与使用方式与官方保持一致。
+>
+> **Docker 镜像地址：** `ghcr.io/waynexucn/glance-custom:latest`
+>
+> 支持平台：`linux/amd64` | `linux/arm64` | `linux/arm/v7`
 
 ## Features
 
@@ -210,11 +216,25 @@ docker compose logs
 
 Create a `docker-compose.yml` file with the following contents:
 
+**使用官方镜像：**
 ```yaml
 services:
   glance:
     container_name: glance
     image: glanceapp/glance
+    restart: unless-stopped
+    volumes:
+      - ./config:/app/config
+    ports:
+      - 8080:8080
+```
+
+**使用本仓库定制镜像（包含微博热搜和 AI Random Fact）：**
+```yaml
+services:
+  glance:
+    container_name: glance
+    image: ghcr.io/waynexucn/glance-custom:latest
     restart: unless-stopped
     volumes:
       - ./config:/app/config
@@ -411,8 +431,19 @@ To build the project and image using just Docker, run:
 
 *(replace `owner` with your name or organization)*
 
+**单平台构建：**
 ```bash
 docker build -t owner/glance:latest .
+```
+
+**多平台构建（推荐，需要 buildx）：**
+```bash
+# 构建并推送到 GitHub Container Registry
+docker buildx build \
+  --platform linux/amd64,linux/arm64,linux/arm/v7 \
+  --tag ghcr.io/owner/glance-custom:latest \
+  --push \
+  .
 ```
 
 If you wish to push the image to a registry (by default Docker Hub), run:
