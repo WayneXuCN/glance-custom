@@ -42,6 +42,7 @@
   - [Markets](#markets)
   - [Twitch Channels](#twitch-channels)
   - [Twitch Top Games](#twitch-top-games)
+  - [Weibo](#weibo)
   - [iframe](#iframe)
   - [HTML](#html)
 
@@ -2922,6 +2923,42 @@ The maximum number of games to show.
 
 ##### `collapse-after`
 How many games are visible before the "SHOW MORE" button appears. Set to `-1` to never collapse.
+
+### Weibo
+Display a list of hot search topics from Weibo (Chinese social media platform).
+
+Example:
+
+```yaml
+- type: weibo
+  limit: 15
+  refresh-interval: 30
+```
+
+#### Properties
+| Name | Type | Required | Default |
+| ---- | ---- | -------- | ------- |
+| limit | integer | no | 10 |
+| show-count | integer | no | 10 |
+| category | string | no | |
+| refresh-interval | integer | no | 30 |
+
+##### `limit` / `show-count`
+The maximum number of hot search topics to display. The value ranges from 1 to 50. If both are specified, `limit` takes precedence.
+
+##### `category`
+Filter hot search topics by category. Common categories include:
+- 娱乐 (Entertainment)
+- 社会 (Society)
+- 科技 (Technology)
+- 体育 (Sports)
+- 财经 (Finance)
+- 热点 (Hot Topics)
+- 军事 (Military)
+- 国际 (International)
+
+##### `refresh-interval`
+The refresh interval in minutes for fetching new hot search data. The default is 30 minutes.
 
 ### iframe
 Embed an iframe as a widget.

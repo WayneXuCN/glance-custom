@@ -1,0 +1,59 @@
+/* 微博热搜Widget样式优化 */
+
+/* 优化整体布局和间距 */
+.weibo-hot-search .list {
+    gap: 1.2rem; /* 增加列表项之间的间距 */
+}
+
+/* 优化排名显示 */
+.weibo-hot-search .weibo-rank {
+    font-weight: 600;
+    color: var(--color-text-subdue);
+    min-width: 2.2rem; /* 稍微增加最小宽度 */
+}
+
+/* 优化关键词显示 */
+.weibo-hot-search .weibo-keyword {
+    font-size: var(--font-size-h3); /* 增大字体大小，与其他Widget主字段一致 */
+    font-weight: 500;
+    line-height: 1.4;
+    font-family: var(--font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif); /* 使用系统字体，与整体页面协调 */
+}
+
+/* 优化图标显示 */
+.weibo-hot-search .weibo-icon {
+    margin-right: 0.3rem; /* 增加图标与文字之间的间距 */
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+/* 优化分类标签显示 */
+.weibo-hot-search .weibo-category {
+    font-size: var(--font-size-h5); /* 稍微增大标签字体 */
+    padding: 0.1rem 0.4rem;
+    background-color: var(--color-widget-background-highlight);
+    border-radius: var(--border-radius);
+    font-weight: 500;
+}
+
+/* 优化热度值显示 */
+.weibo-hot-search .weibo-hot-value {
+    font-size: var(--font-size-h5); /* 稍微增大热度值字体 */
+    font-weight: 500;
+}
+
+/* 优化移动端显示 */
+@media (max-width: 600px) {
+    .weibo-hot-search .weibo-keyword {
+        font-size: var(--font-size-h4); /* 移动端稍微减小字体 */
+    }
+    
+    .weibo-hot-search .weibo-rank {
+        min-width: 2rem;
+    }
+    
+    .weibo-hot-search .weibo-icon {
+        width: 1.4rem;
+        height: 1.4rem;
+    }
+}

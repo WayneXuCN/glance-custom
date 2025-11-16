@@ -1,0 +1,43 @@
+{{ template "widget-base.html" . }}
+
+{{ define "widget-content-classes" }}widget-rows-{{ end }}
+
+{{ define "widget-content" }}
+<div class="weibo-hot-search">
+    {{ if .HotSearches }}
+    <ul class="list list-gap-8">
+        {{ range .HotSearches }}
+        <li class="flex items-center gap-12">
+            <div class="weibo-rank shrink-0 text-right size-h4 color-subdue" style="min-width: 2.2rem;">
+                {{ .RealPos }}
+            </div>
+            <div class="grow min-width-0">
+                <div class="flex items-center gap-10">
+                    {{ if .Icon }}
+                    <img src="{{ .Icon }}" alt="" class="weibo-icon shrink-0">
+                    {{ end }}
+                    <a href="{{ .URL }}" target="_blank" rel="noreferrer" class="weibo-keyword text-truncate color-primary visited-indicator">
+                        {{ .Word }}
+                    </a>
+                </div>
+            </div>
+            <div class="flex items-center gap-6 shrink-0">
+                {{ if .LabelName }}
+                <span class="weibo-category size-h6 color-subdue" title="{{ .LabelName }}">
+                    {{ .CategoryDisplayName }}
+                </span>
+                {{ end }}
+                <span class="weibo-hot-value size-h6 color-subdue">
+                    {{ .FormattedHotValue }}
+                </span>
+            </div>
+        </li>
+        {{ end }}
+    </ul>
+    {{ else }}
+    <div class="widget-empty">
+        <div class="color-subdue">暂无热搜数据</div>
+    </div>
+    {{ end }}
+</div>
+{{ end }}
